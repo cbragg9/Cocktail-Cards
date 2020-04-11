@@ -1,0 +1,41 @@
+/* Required for full size background imagea */
+html,
+body {
+    min-height: -webkit-fill-available;
+    margin: 0;
+}
+
+/* Navbar Icon spacing */
+.fa-2x {
+    margin-right: 15px;
+}
+
+/* Section holding main content */
+.section {
+    padding: 0%;
+    min-height: -webkit-fill-available;
+    background-image: url(./docs/background.jpeg);
+    background-position: center;
+    background-size: cover;
+}
+
+/* Required for full height column */
+.columns {
+    min-height: -webkit-fill-available;
+}
+
+/* Padding for menu */
+.menu-column {
+    padding: 5%;
+}
+
+.menu-label {
+    font-size: 20px;
+}
+
+/* White menu coloring */
+.menu-label,
+.menu-list li a {
+    color: white;
+}
+
