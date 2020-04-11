@@ -2,6 +2,7 @@
 html,
 body {
     min-height: -webkit-fill-available;
+    min-width: -webkit-fill-available;
     margin: 0;
 }
 
@@ -22,6 +23,7 @@ body {
 /* Required for full height column */
 .columns {
     min-height: -webkit-fill-available;
+    min-width: -webkit-fill-available;
 }
 
 /* Padding for menu */
@@ -29,6 +31,7 @@ body {
     padding: 5%;
 }
 
+/* Pick your poison font */
 .menu-label {
     font-size: 20px;
 }
@@ -39,10 +42,9 @@ body {
     color: white;
 }
 
+/* Card spacing */
 .card {
-    margin: 3% 2%;
-    height: 35%;
-    width: 35%;
+    margin: 20% 5% 0% 0%;
 }
 
 .card-image {
