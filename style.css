@@ -1,24 +1,16 @@
 /* Required for full size background imagea */
 html,
 body {
-    min-height: -webkit-fill-available;
-    min-width: -webkit-fill-available;
-    margin: 0;
+    background: url(./docs/background.jpeg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 /* Navbar Icon spacing */
 .fa-2x {
     margin-right: 15px;
-}
-
-/* Section holding main content */
-.section {
-    padding: 0%;
-    min-height: -webkit-fill-available;
-    background-image: url(./docs/background.jpeg);
-    background-position: center;
-    background-size: cover;
-    position: relative;
 }
 
 /* Required for full height column */
@@ -46,6 +38,8 @@ body {
 /* Card spacing */
 .card {
     margin: 20% 5% 0% 0%;
+    height: 90%;
+    border-radius: 3%;
 }
 
 .scroll-up {
@@ -60,4 +54,13 @@ body {
 
 .scroll-up:hover {
     color: rgb(109, 29, 29);
+}
+
+.content ul li {
+    text-align: left;
+}
+
+.field {
+    margin-top: 10% 0% 0% -15%;
+    /* width: 100%; */
 }

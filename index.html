@@ -38,7 +38,7 @@
     <!-- Main content section -->
     <div class="section content-section">
         <a class="scroll-up" href="#top-of-page"><i class="fas fa-2x fa-chevron-circle-up"></i></a>
-        <div class="columns is-mobile">
+        <div class="columns is-mobile" style="margin-bottom: 0px;">
 
             <!-- Left hand menu -->
             <div class="column is-3 menu-column">
@@ -50,204 +50,62 @@
                     </p>
 
                     <ul class="menu-list">
-                        <li><a>Vodka</a></li>
-                        <li><a>Gin</a></li>
-                        <li><a>Rum</a></li>
+                        <li><a class="liquor-selection">Vodka</a></li>
+                        <li><a class="liquor-selection">Gin</a></li>
+                        <li><a class="liquor-selection">Rum</a></li>
                         <li>
-                            <a>Brandy</a>
+                            <a class="liquor-selection">Brandy</a>
                             <ul>
-                                <li><a>Cognac</a></li>
+                                <li><a class="liquor-selection">Cognac</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a>Tequila</a>
+                            <a class="liquor-selection">Tequila</a>
                             <ul>
-                                <li><a>Mezcal</a></li>
+                                <li><a class="liquor-selection">Mezcal</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a>Whiskey</a>
+                            <a class="liquor-selection">Whiskey</a>
                             <ul>
-                                <li><a>Bourbon</a></li>
-                                <li><a>Scotch</a></li>
-                                <li><a>Irish</a></li>
-                                <li><a>Rye</a></li>
-                                <li><a>Tennessee</a></li>
-                                <li><a>Canadian</a></li>
+                                <li><a class="liquor-selection">Bourbon</a></li>
+                                <li><a class="liquor-selection">Scotch</a></li>
+                                <li><a class="liquor-selection">Rye</a></li>
+                                <li><a class="liquor-selection">Tennessee</a></li>
+                                <li><a class="liquor-selection">Canadian</a></li>
                             </ul>
                         </li>
                         <li>
-                            <a>Liqueur</a>
+                            <a class="liquor-selection">Liqueur</a>
                             <ul>
-                                <li><a>Jägermeister</a></li>
-                                <li><a>Amaretto</a></li>
-                                <li><a>Campari</a></li>
-                                <li><a>Kahlúa</a></li>
-                                <li><a>Sambuca</a></li>
-                                <li><a>Cointreau</a></li>
+                                <li><a class="liquor-selection">Jägermeister</a></li>
+                                <li><a class="liquor-selection">Irish Cream</a></li>
+                                <li><a class="liquor-selection">Amaretto</a></li>
+                                <li><a class="liquor-selection">Campari</a></li>
+                                <li><a class="liquor-selection">Kahlúa</a></li>
+                                <li><a class="liquor-selection">Sambuca</a></li>
+                                <li><a class="liquor-selection">Cointreau</a></li>
                             </ul>
                         </li>
                     </ul>
+
+                    <div class="field">
+                        <div class="control">
+                          <input class="input is-danger is-rounded has-text-centered" type="text" placeholder="Filter.." id="filter-input">
+                        </div>
+                    </div>
 
                 </aside>
             </div>
 
             <!-- Right hand content -->
-            <div class="column is-9 content-column">
-
-                <!-- JQUERY DIV: This column can hold three cards before a new one has to be made -->
-                <div class="columns is-three-quarters-mobile has-text-centered" id="prepend-three-cards-here">
-
-                    <!-- Standard card -->
-                    <div class="column is-4 is-three-quarters-mobile">
-                        <div class="card">
-                            <div class="card-image">
-                                <figure class="image is-4by3">
-                                    <img src="https://www.thecocktaildb.com/images/media/drink/kpsajh1504368362.jpg"
-                                        alt="Placeholder image">
-                                </figure>
-                            </div>
-                            <div class="card-content">
-                                <div class="content">
-                                    <a class="title is-size-5">strDrink</a>
-                                    <ul>
-                                        <li>strIngredient1</li>
-                                        <li>strIngredient2</li>
-                                        <li>strIngredient3</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="column is-4 is-three-quarters-mobile">
-                        <div class="card">
-                            <div class="card-image">
-                                <figure class="image is-4by3">
-                                    <img src="https://www.thecocktaildb.com/images/media/drink/mtpxgk1504373297.jpg"
-                                        alt="Placeholder image">
-                                </figure>
-                            </div>
-                            <div class="card-content">
-                                <div class="content">
-                                    <a class="title is-size-5">strDrink</a>
-                                    <ul>
-                                        <li>strIngredient1</li>
-                                        <li>strIngredient2</li>
-                                        <li>strIngredient3</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="column is-4 is-three-quarters-mobile">
-                        <div class="card">
-                            <div class="card-image">
-                                <figure class="image is-4by3">
-                                    <img src="https://www.thecocktaildb.com/images/media/drink/0fbo2t1485620752.jpg"
-                                        alt="Placeholder image">
-                                </figure>
-                            </div>
-                            <div class="card-content">
-                                <div class="content">
-                                    <a class="title is-size-5">strDrink</a>
-                                    <ul>
-                                        <li>strIngredient1</li>
-                                        <li>strIngredient2</li>
-                                        <li>strIngredient3</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!-- JQUERY DIV: This column can hold three cards before a new one has to be made -->
-                <div class="columns is-three-quarters-mobile has-text-centered" id="prepend-three-cards-here">
-
-                    <!-- Standard card -->
-                    <div class="column is-4 is-three-quarters-mobile">
-                        <div class="card">
-                            <div class="card-image">
-                                <figure class="image is-4by3">
-                                    <img src="https://www.thecocktaildb.com/images/media/drink/kpsajh1504368362.jpg"
-                                        alt="Placeholder image">
-                                </figure>
-                            </div>
-                            <div class="card-content">
-                                <div class="content">
-                                    <a class="title is-size-5">strDrink</a>
-                                    <ul>
-                                        <li>strIngredient1</li>
-                                        <li>strIngredient2</li>
-                                        <li>strIngredient3</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="column is-4 is-three-quarters-mobile">
-                        <div class="card">
-                            <div class="card-image">
-                                <figure class="image is-4by3">
-                                    <img src="https://www.thecocktaildb.com/images/media/drink/mtpxgk1504373297.jpg"
-                                        alt="Placeholder image">
-                                </figure>
-                            </div>
-                            <div class="card-content">
-                                <div class="content">
-                                    <a class="title is-size-5">strDrink</a>
-                                    <ul>
-                                        <li>strIngredient1</li>
-                                        <li>strIngredient2</li>
-                                        <li>strIngredient3</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="column is-4 is-three-quarters-mobile">
-                        <div class="card">
-                            <div class="card-image">
-                                <figure class="image is-4by3">
-                                    <img src="https://www.thecocktaildb.com/images/media/drink/0fbo2t1485620752.jpg"
-                                        alt="Placeholder image">
-                                </figure>
-                            </div>
-                            <div class="card-content">
-                                <div class="content">
-                                    <a class="title is-size-5">strDrink</a>
-                                    <ul>
-                                        <li>strIngredient1</li>
-                                        <li>strIngredient2</li>
-                                        <li>strIngredient3</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-
-
-
-
-
+            <div class="column is-9 content-column" id="append-new-columns-here">
 
             </div>
 
 
-        </div>
-    </div>
-
-
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="script.js"></script>
+            <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+            <script src="script.js"></script>
 </body>
 
 </html>
