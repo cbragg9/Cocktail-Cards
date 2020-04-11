@@ -39,3 +39,12 @@ body {
     color: white;
 }
 
+.card {
+    margin: 3% 2%;
+    height: 35%;
+    width: 35%;
+}
+
+.card-image {
+    border-bottom: solid rgb(44, 44, 104) 5px;
+}
