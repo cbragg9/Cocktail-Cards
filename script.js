@@ -20,10 +20,19 @@ $(document).ready(function () {
         currentColumns = 0;
         drinkIDs = [];
         newCardDivCount = 0;
-        userSelection = $(this).text();
+        checkSelection(this);
         checkForSpecialNames();
         getCocktailID();
     });
+
+    // Check to see if user searched by menu item or by search bar
+    function checkSelection(button) {
+        if ($(button).is("#search-submit")) {
+            userSelection = $("#search-input").val();
+        } else {
+            userSelection = $(button).text();
+        }
+    }
 
     // Change API search based on menu selections
     function checkForSpecialNames() {
@@ -94,6 +103,7 @@ $(document).ready(function () {
     function createCard() {
         newCardColumn = $("<div>");
         newCardColumn.addClass("column is-4 is-three-quarters-mobile");
+        newCardColumn.attr("id", "id-" + countDrinks);
         var newCard = $("<div class=card>");
         var newCardAnchor = $("<a>");
         var newCardImageDiv = $("<div class=card-image>");
@@ -109,12 +119,15 @@ $(document).ready(function () {
         newContentP.text(strDrink);
         var newUL = $("<ul>");
         var newLiIngredients1 = $("<li>");
+        newLiIngredients1.addClass("drink-" + countDrinks);
         newLiIngredients1.text(strIngredient1);
         var newLiIngredients2 = $("<li>");
+        newLiIngredients2.addClass("drink-" + countDrinks);
         newLiIngredients2.text(strIngredient2);
 
         if (strIngredient3 !== null) {
             var newLiIngredients3 = $("<li>");
+            newLiIngredients3.addClass("drink-" + countDrinks);
             newLiIngredients3.text(strIngredient3);
         }
 
@@ -145,5 +158,30 @@ $(document).ready(function () {
         }
     }
 
+    // Filter out ingredients selected by user
+    $("#filter-submit").on("click", function() {
+        var filterIngredient = $("#filter-input").val().toLowerCase();
+
+        for (var i = 0; i < countDrinks; i++) {
+            var drinkIngredients = $(".drink-" + i).text().toLowerCase();
+            
+            if (drinkIngredients.includes(filterIngredient)) {
+                $("#id-" + i).remove();
+            }
+        }
+
+    });
+
+    // Clear search box when clicked into
+    $(".search-box").on("click", function() {
+        $(".search-box").val("");
+    });
+
 });
 
+// API's used
+// Search by ingredient
+// https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Gin
+
+// Lookup full cocktail details by id
+// https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11007
