@@ -2,6 +2,7 @@ $(document).ready(function () {
 
     var userSelection = "";
     var drinkIDs = [];
+    var ingredientList = [];
     var searchByIngredientResponse = "";
     var strDrink = "";
     var strIngredient1 = "";
@@ -12,9 +13,11 @@ $(document).ready(function () {
     var newCardDivCount = 0;
     var currentColumns = 0;
     var countDrinks = 0;
+    var cardsDisplayed = false;
 
     // When a user clicks on a menu DataTransferItem, clear variables and begin helper functions
     $(".liquor-selection").on("click", function () {
+        cardsDisplayed = false;
         $("#append-new-columns-here").html("");
         countDrinks = 0;
         currentColumns = 0;
@@ -28,20 +31,22 @@ $(document).ready(function () {
     // Check to see if user searched by menu item or by search bar
     function checkSelection(button) {
         if ($(button).is("#search-submit")) {
-            userSelection = $("#search-input").val();
+            userSelection = $("#search-input").val().toLowerCase();
         } else {
-            userSelection = $(button).text();
+            userSelection = $(button).text().toLowerCase();
         }
     }
 
     // Change API search based on menu selections
     function checkForSpecialNames() {
-        if (userSelection === "Rye") {
+        if (userSelection === "rye") {
             userSelection = "Rye Whiskey";
-        } else if (userSelection === "Tennessee") {
+        } else if (userSelection === "tennessee") {
             userSelection = "Jack Daniels";
-        } else if (userSelection === "Canadian") {
+        } else if (userSelection === "canadian") {
             userSelection = "Crown Royal";
+        } else if (userSelection === "sour") {
+            userSelection = "Sour Mix";
         }
     }
 
@@ -51,7 +56,7 @@ $(document).ready(function () {
         $.ajax({
             url: queryByIngredientURL,
             method: "GET"
-        }).then(function (response) {
+        }).done(function (response) {
             searchByIngredientResponse = response;
             populateDrinkIDs();
             createNewDivs();
@@ -93,11 +98,53 @@ $(document).ready(function () {
                 strIngredient1 = fullDrinkDetails.drinks[0].strIngredient1;
                 strIngredient2 = fullDrinkDetails.drinks[0].strIngredient2;
                 strIngredient3 = fullDrinkDetails.drinks[0].strIngredient3;
+                strID = fullDrinkDetails.drinks[0].idDrink;
                 strDrinkThumb = fullDrinkDetails.drinks[0].strDrinkThumb;
-                createCard();
+
+                if (cardsDisplayed === false) {
+                    createCard();
+                } else if (cardsDisplayed === true) {
+                    return getIngredientList(fullDrinkDetails);
+                }
+
             });
         }
     }
+
+
+    // Push full ingredient list to array
+    function getIngredientList(drinkDetails) {
+        ingredientList = [];
+        
+        console.log(drinkDetails);
+
+        for (var j = 1; j < 16; j++) {
+            var currentIngredient = drinkDetails['drinks'][0]['strIngredient' + j];
+            if (currentIngredient != null && currentIngredient != "") {
+                ingredientList.push(currentIngredient);
+            }
+        }
+
+        updateModal(drinkDetails);
+    }
+
+    // Display drink details in modal
+    function updateModal(drinkDetails) {
+        $("#modal-drinkName").text(strDrink);
+        $("#modal-glass").text(drinkDetails.drinks[0].strGlass);
+        $("#modal-img").attr("src", strDrinkThumb);
+        $("#modal-instructions").text(drinkDetails.drinks[0].strInstructions);
+        $(".modal").addClass("is-active");
+        $("#add-modal-ingredients-here").html("");
+
+        // Append full ingredient list to list element
+        for (var i = 0; i < ingredientList.length; i++) {
+            var newListEl = $("<li>");
+            newListEl.text(ingredientList[i]);
+            $("#add-modal-ingredients-here").append(newListEl); 
+        }
+    }
+
 
     // Create card HTML and append to HTML
     function createCard() {
@@ -105,6 +152,7 @@ $(document).ready(function () {
         newCardColumn.addClass("column is-4 is-three-quarters-mobile");
         newCardColumn.attr("id", "id-" + countDrinks);
         var newCard = $("<div class=card>");
+        newCard.attr("data-drinkID", strID);
         var newCardAnchor = $("<a>");
         var newCardImageDiv = $("<div class=card-image>");
         var newCardFigure = $("<figure>");
@@ -175,6 +223,19 @@ $(document).ready(function () {
     // Clear search box when clicked into
     $(".search-box").on("click", function() {
         $(".search-box").val("");
+    });
+
+    // When a card is clicked, save the drink ID and make an api call for full drink details
+    $(document).on("click", ".card", function() {
+        drinkIDs = [];
+        drinkIDs.push($(this).attr("data-drinkID"));
+        cardsDisplayed = true;
+        findCocktailDetails();
+    })
+
+    // Close modal on exit button
+    $(document).on("click","#modal-exit", function() {
+        $(".modal").attr("class", "modal");
     });
 
 });

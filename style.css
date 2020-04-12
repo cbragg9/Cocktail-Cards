@@ -80,3 +80,7 @@ body {
 .search-box:hover {
     opacity: 1;
 }
+
+.modal-description {
+    min-height: 60%;
+}
