@@ -14,6 +14,7 @@ $(document).ready(function () {
     var currentColumns = 0;
     var countDrinks = 0;
     var cardsDisplayed = false;
+    var numCards = 0;
 
     // When a user clicks on a menu DataTransferItem, clear variables and begin helper functions
     $(".liquor-selection").on("click", function () {
@@ -47,6 +48,8 @@ $(document).ready(function () {
             userSelection = "Crown Royal";
         } else if (userSelection === "sour") {
             userSelection = "Sour Mix";
+        } else if (userSelection === "irish cream") {
+            userSelection = "Baileys irish cream";
         }
     }
 
@@ -75,7 +78,7 @@ $(document).ready(function () {
     function createNewDivs() {
         for (var i = 0; i < drinkIDs.length; i++) {
             var newColumnDivs = $("<div>");
-            newColumnDivs.addClass("columns is-three-quarters-mobile has-text-centered");
+            newColumnDivs.addClass("columns is-three-quarters-mobile has-text-centered drink-row");
             newColumnDivs.attr("id", "append-three-cards-here-" + newCardDivCount);
 
             if (i % 3 === 0) {
@@ -116,8 +119,6 @@ $(document).ready(function () {
     function getIngredientList(drinkDetails) {
         ingredientList = [];
         
-        console.log(drinkDetails);
-
         for (var j = 1; j < 16; j++) {
             var currentIngredient = drinkDetails['drinks'][0]['strIngredient' + j];
             if (currentIngredient != null && currentIngredient != "") {
@@ -149,7 +150,7 @@ $(document).ready(function () {
     // Create card HTML and append to HTML
     function createCard() {
         newCardColumn = $("<div>");
-        newCardColumn.addClass("column is-4 is-three-quarters-mobile");
+        newCardColumn.addClass("column is-4 is-three-quarters-mobile drink-card");
         newCardColumn.attr("id", "id-" + countDrinks);
         var newCard = $("<div class=card>");
         newCard.attr("data-drinkID", strID);
@@ -218,7 +219,34 @@ $(document).ready(function () {
             }
         }
 
+        renderFilteredCards();
     });
+
+    // Re-render the remaining cards on the HTML
+    function renderFilteredCards() {
+
+        // Save the number of rows in a variable
+        var currentRows = $(".drink-row").length;
+
+        // Save the remaining card html in an array of objects
+        var drinkArrayObject = [$(".drink-card")];
+
+        // Count the number of drinks appended to be used when calling the drinkArrayObject
+        var numDrinksAppended = 0;
+        
+        // For each row of cards..
+        for (var i = 0; i < currentRows; i++) {
+            var appendThreeEl = $("#append-three-cards-here-" + i);
+            appendThreeEl.empty();
+
+            // Append three of the drinks saved in the drinkArrayObject
+            for (var j = 0; j < 3; j++) {
+                $("#append-three-cards-here-" + i).append(drinkArrayObject[0][numDrinksAppended]);
+                numDrinksAppended++;
+            }        
+
+        }
+    }
 
     // Clear search box when clicked into
     $(".search-box").on("click", function() {
