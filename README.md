@@ -2,10 +2,11 @@
 Select a liquor to display cocktail suggestions  
 
 # Latest Commit  
--Added media screen for small widths  
--Updated column classes for bulma responsiveness  
+-Override modal flex direction  
 
 # Completed  
+-Added media screen for small widths  
+-Updated column classes for bulma responsiveness  
 -Filter now redisplays the cards to remove empty spaces  
 -Added modal display on card click  
 -Error proofing with toLowerCase  

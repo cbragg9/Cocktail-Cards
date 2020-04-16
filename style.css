@@ -90,3 +90,11 @@ body {
 .modal-description {
     min-height: 60%;
 }
+
+.image.is-64x64 {
+    width: 30%;
+}
+
+.modal {
+    flex-direction: row !important;
+}
