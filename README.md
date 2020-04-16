@@ -2,9 +2,11 @@
 Select a liquor to display cocktail suggestions  
 
 # Latest Commit  
--Filter now redisplays the cards to remove empty spaces  
+-Added media screen for small widths  
+-Updated column classes for bulma responsiveness  
 
 # Completed  
+-Filter now redisplays the cards to remove empty spaces  
 -Added modal display on card click  
 -Error proofing with toLowerCase  
 -Script updated to create cards on click  

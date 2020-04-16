@@ -78,7 +78,7 @@ $(document).ready(function () {
     function createNewDivs() {
         for (var i = 0; i < drinkIDs.length; i++) {
             var newColumnDivs = $("<div>");
-            newColumnDivs.addClass("columns is-three-quarters-mobile has-text-centered drink-row");
+            newColumnDivs.addClass("columns has-text-centered drink-row");
             newColumnDivs.attr("id", "append-three-cards-here-" + newCardDivCount);
 
             if (i % 3 === 0) {
@@ -150,7 +150,7 @@ $(document).ready(function () {
     // Create card HTML and append to HTML
     function createCard() {
         newCardColumn = $("<div>");
-        newCardColumn.addClass("column is-4 is-three-quarters-mobile drink-card");
+        newCardColumn.addClass("column is-4 drink-card");
         newCardColumn.attr("id", "id-" + countDrinks);
         var newCard = $("<div class=card>");
         newCard.attr("data-drinkID", strID);
